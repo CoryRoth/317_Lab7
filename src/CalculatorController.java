@@ -19,7 +19,6 @@ public class CalculatorController {
     class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-
             // Handle button clicks
         }
     }
