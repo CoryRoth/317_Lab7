@@ -50,6 +50,8 @@ public class CalculatorView implements Observer {
     private class ButtonClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
+            //TODO THIS IS important
+            System.out.println(command);
             // Handle button clicks
         }
     }
