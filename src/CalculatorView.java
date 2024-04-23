@@ -56,6 +56,18 @@ public class CalculatorView implements Observer {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
 			
+			//TODO decide on cummative operations or only allowing one operation at a time
+			
+			//TODO set button to listen to on release????
+			
+			//TODO don't disply operations
+			
+			//TODO operations buttons remain clicked
+			
+			//TODO MEMORY
+			
+			//TODO DELETE
+			
 			//possible fix
 			if (command.equals("+")) {
 				//frame.getContentPane().getComponent() //possible other fix
