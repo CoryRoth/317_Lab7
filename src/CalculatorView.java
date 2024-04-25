@@ -67,6 +67,8 @@ public class CalculatorView implements Observer {
 			String currentText = displayField.getText();
 
 			// TODO operations buttons remain clicked
+			
+			//TODO check for errors like DBZ
 
 			if (command.equals("=")) {
 				Double output = null;
