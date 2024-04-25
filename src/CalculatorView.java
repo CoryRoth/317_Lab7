@@ -8,7 +8,12 @@ import java.util.Observer;
 public class CalculatorView implements Observer {
 	private JFrame frame;
 	private JTextField displayField;
-    private JButton plusButton; // New class-level variable for the plus button
+	private JButton plusButton; // New class-level variable for the plus button
+
+	private Double firstOperand;
+	private String operation;
+	private Double secondOperand;
+	private boolean resetInfo = false;
 
 	public CalculatorView() {
 		frame = new JFrame("Simple Calculator");
@@ -20,15 +25,16 @@ public class CalculatorView implements Observer {
 		displayField.setEditable(false);
 		frame.add(displayField, BorderLayout.NORTH);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(5, 4));
-		String[] buttonLabels = { "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+" };
+		JPanel buttonPanel = new JPanel(new GridLayout(6, 4));
+		String[] buttonLabels = { "M+", "M-", "MR", "MC", "Del", "Clr", "sqrt", "sq", "7", "8", "9", "/", "4", "5", "6",
+				"*", "1", "2", "3", "-", "0", ".", "=", "+" };
 		for (String label : buttonLabels) {
 			JButton button = new JButton(label);
-			
+
 			button.addActionListener(new ButtonClickListener());
 			if (label.equals("+")) {
-                plusButton = button;
-            }
+				plusButton = button;
+			}
 			buttonPanel.add(button);
 		}
 		frame.add(buttonPanel, BorderLayout.CENTER);
@@ -55,44 +61,91 @@ public class CalculatorView implements Observer {
 	private class ButtonClickListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
-			
-			
-			//FEATURES
-			//TODO decide on cummative operations or only allowing one operation at a time
-			
-			//TODO set button to listen to on release????
-			
-			//TODO don't disply operations
-			
-			//TODO operations buttons remain clicked
-			
-			//TODO all operations must end w/ = to be executed
 
-			
-			//FUNCTIONS
-			//TODO MEMORY
-			
-			//TODO DELETE
-			
-			
-			//possible fix
-			if (command.equals("+")) {
-				//frame.getContentPane().getComponent() //possible other fix
-                plusButton.setBackground(Color.RED); // Change the background color of the plus button
-            }
-			// TODO
-			//THIS IS WERE LOIGIC Happens
-			
-			//do not show operations call
-				//instead updaate state of button to active/inactive
-			
-			// = means exec (call operate)
-			// need to get 2 operands
-			
 			String currentText = displayField.getText();
 
+			if (command.equals("=")) {
+				Double output = null;
+				if (operation.equals("sq")) {
+					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+				} else if (operation.equals("sqrt")) {
+					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+				} else {
+					secondOperand = Double.valueOf(currentText);
+					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+				}
+				displayField.setText(output.toString()); // Handle button clicks
+			} else if (command.equals("+")) {
+				// frame.getContentPane().getComponent() //possible other fix
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				plusButton.setBackground(Color.RED); // Change the background color of the plus button
+				resetInfo = true;
+			} else if (command.equals("-")) {
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				resetInfo = true;
+			} else if (command.equals("/")) {
+				// frame.getContentPane().getComponent() //possible other fix
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				resetInfo = true;
+			} else if (command.equals("*")) {
+				// frame.getContentPane().getComponent() //possible other fix
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				resetInfo = true;
+			} else if (command.equals("sq")) {
+				// frame.getContentPane().getComponent() //possible other fix
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				resetInfo = true;
+			} else if (command.equals("sqrt")) {
+				// frame.getContentPane().getComponent() //possible other fix
+				firstOperand = Double.valueOf(currentText);
+				operation = command;
+				resetInfo = true;
+			} else if (command.equals("Del")) {
+				currentText = currentText.substring(0, currentText.length() - 1);
+				displayField.setText(currentText);
+
+			} else {
+				if (resetInfo) {
+					displayField.setText(command);
+
+					resetInfo = false;
+				} else {
+					displayField.setText(currentText + command);
+				} // Handle button clicks
+			}
+
+			// FEATURES
+			// TODO decide on cummative operations or only allowing one operation at a time
+
+			// TODO set button to listen to on release????
+
+			// TODO don't disply operations
+
+			// TODO operations buttons remain clicked
+
+			// TODO all operations must end w/ = to be executed
+
+			// FUNCTIONS
+			// TODO MEMORY
+
+			// TODO DELETE
+
+			// possible fix
+			// TODO
+			// THIS IS WERE LOIGIC Happens
+
+			// do not show operations call
+			// instead updaate state of button to active/inactive
+
+			// = means exec (call operate)
+			// need to get 2 operands
+
 			// Appsend the button's text to the current text in the display field
-			displayField.setText(currentText + command); // Handle button clicks
 		}
 	}
 }

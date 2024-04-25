@@ -3,7 +3,7 @@ import java.util.Observable;
 public class CalculatorModel extends Observable {
     private double memory = 0;
 
-    public double calculate(double num1, double num2, String operator) {
+    public static double calculate(double num1, double num2, String operator) {
         double result = 0;
         switch (operator) {
             case "+":
@@ -24,8 +24,8 @@ public class CalculatorModel extends Observable {
                 }
                 break;
         }
-        setChanged();
-        notifyObservers(result);
+        //setChanged();
+        //notifyObservers(result);
         return result;
     }
 
