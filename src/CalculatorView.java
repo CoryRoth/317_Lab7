@@ -14,8 +14,10 @@ public class CalculatorView implements Observer {
 	private String operation;
 	private Double secondOperand;
 	private boolean resetInfo = false;
+	private CalculatorModel model;
 
 	public CalculatorView() {
+		this.model = new CalculatorModel();
 		frame = new JFrame("Simple Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300, 400);
@@ -64,17 +66,24 @@ public class CalculatorView implements Observer {
 
 			String currentText = displayField.getText();
 
+			// TODO operations buttons remain clicked
+
 			if (command.equals("=")) {
 				Double output = null;
 				if (operation.equals("sq")) {
-					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+					secondOperand = (double) 0;
+					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
 				} else if (operation.equals("sqrt")) {
-					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+					secondOperand = (double) 0;
+
+					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
 				} else {
+					//TODO only one operand enter case
 					secondOperand = Double.valueOf(currentText);
-					output = CalculatorModel.calculate(secondOperand, firstOperand, operation);
+					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
 				}
-				displayField.setText(output.toString()); // Handle button clicks
+				displayField.setText(output.toString()); // Handle button
+				operation = command;
 			} else if (command.equals("+")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
@@ -109,6 +118,31 @@ public class CalculatorView implements Observer {
 				currentText = currentText.substring(0, currentText.length() - 1);
 				displayField.setText(currentText);
 
+			} else if (command.equals("Clr")) {
+				displayField.setText(" ");
+
+			} else if (command.equals("M+")) {
+				if (operation.equals("=")) {
+					Double currentMemory = model.getMemory();
+					model.setMemory(currentMemory + Double.valueOf(currentText));
+				} else {
+					// TODO throw error
+				}
+
+			} else if (command.equals("M-")) {
+				if (operation.equals("=")) {
+					Double currentMemory = model.getMemory();
+					model.setMemory(currentMemory - Double.valueOf(currentText));
+				} else {
+					// TODO throw error
+				}
+			} else if (command.equals("MR")) {
+				Double currentMemory = model.getMemory();
+				displayField.setText(currentMemory.toString());
+
+			} else if (command.equals("MC")) {
+				model.setMemory(0);
+
 			} else {
 				if (resetInfo) {
 					displayField.setText(command);
@@ -119,6 +153,8 @@ public class CalculatorView implements Observer {
 				} // Handle button clicks
 			}
 
+			
+			//NOTES
 			// FEATURES
 			// TODO decide on cummative operations or only allowing one operation at a time
 

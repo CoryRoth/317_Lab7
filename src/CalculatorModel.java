@@ -23,6 +23,12 @@ public class CalculatorModel extends Observable {
                     result = Double.NaN;
                 }
                 break;
+            case "sq":
+            	result = num1 * num1;
+            	break;
+            case "sqrt":
+            	result = Math.sqrt(num1);
+            	break;
         }
         //setChanged();
         //notifyObservers(result);
