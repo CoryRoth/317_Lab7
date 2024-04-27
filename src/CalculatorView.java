@@ -9,12 +9,18 @@ public class CalculatorView implements Observer {
 	private JFrame frame;
 	private JTextField displayField;
 	private JButton plusButton; // New class-level variable for the plus button
+	private JButton minusButton; // New class-level variable for the plus button
+	private JButton divideButton; // New class-level variable for the plus button
+	private JButton multButton; // New class-level variable for the plus button
+	private JButton sqButton; // New class-level variable for the plus button
+	private JButton sqrtButton; // New class-level variable for the plus button
 
 	private Double firstOperand;
 	private String operation;
 	private Double secondOperand;
 	private boolean resetInfo = false;
 	private CalculatorModel model;
+	private Color color;
 
 	public CalculatorView() {
 		this.model = new CalculatorModel();
@@ -36,8 +42,19 @@ public class CalculatorView implements Observer {
 			button.addActionListener(new ButtonClickListener());
 			if (label.equals("+")) {
 				plusButton = button;
+			} else if (label.equals("-")) {
+				minusButton = button;
+			} else if (label.equals("*")) {
+				multButton = button;
+			} else if (label.equals("/")) {
+				divideButton = button;
+			} else if (label.equals("sq")) {
+				sqButton = button;
+			} else if (label.equals("sqrt")) {
+				sqrtButton = button;
 			}
 			buttonPanel.add(button);
+			color = button.getBackground();
 		}
 		frame.add(buttonPanel, BorderLayout.CENTER);
 
@@ -67,11 +84,18 @@ public class CalculatorView implements Observer {
 			String currentText = displayField.getText();
 
 			// TODO operations buttons remain clicked
-			
-			//TODO check for errors like DBZ
+
+			// TODO check for errors like DBZ
 
 			if (command.equals("=")) {
 				Double output = null;
+				divideButton.setBackground(color); // Change the background color of the plus button
+				plusButton.setBackground(color); // Change the background color of the plus button
+				multButton.setBackground(color); // Change the background color of the plus button
+				minusButton.setBackground(color); // Change the background color of the plus button
+				sqButton.setBackground(color); // Change the background color of the plus button
+				sqrtButton.setBackground(color); // Change the background color of the plus button
+
 				if (operation.equals("sq")) {
 					secondOperand = (double) 0;
 					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
@@ -80,7 +104,7 @@ public class CalculatorView implements Observer {
 
 					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
 				} else {
-					//TODO only one operand enter case
+					// TODO only one operand enter case
 					secondOperand = Double.valueOf(currentText);
 					output = CalculatorModel.calculate(firstOperand, secondOperand, operation);
 				}
@@ -95,26 +119,31 @@ public class CalculatorView implements Observer {
 			} else if (command.equals("-")) {
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				minusButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("/")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				divideButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("*")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				multButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("sq")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				sqButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("sqrt")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				sqrtButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("Del")) {
 				currentText = currentText.substring(0, currentText.length() - 1);
@@ -155,8 +184,7 @@ public class CalculatorView implements Observer {
 				} // Handle button clicks
 			}
 
-			
-			//NOTES
+			// NOTES
 			// FEATURES
 			// TODO decide on cummative operations or only allowing one operation at a time
 
