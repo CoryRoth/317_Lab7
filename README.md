@@ -2,12 +2,12 @@
 
 To run the GUI, run the test.java file in the src folder
 
-![Image](Images/Image0.jpg)
+![Image](Images/Image1.jpg)
 
 
 This window will pop up
 
-![Image](Images/Image1.jpg)
+![Image](Images/Image0.jpg)
 
 Then use it asa regular calculator,
 
