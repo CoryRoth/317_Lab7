@@ -2,14 +2,15 @@
 
 To run the GUI, run the test.java file in the src folder
 
-INSERT Image of test.java
+![Image](Images/Image0.jpg)
+
 
 This window will pop up
 
-Insert image of window
+![Image](Images/Image1.jpg)
 
 Then use it asa regular calculator,
 
 When a operation is selected, it will be highlighted in red
 
-Insert image 2
+![Image](Images/Image2.jpg)
