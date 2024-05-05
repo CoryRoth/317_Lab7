@@ -1,3 +1,4 @@
+package lab7;
 import java.util.Observable;
 
 public class CalculatorModel extends Observable {
