@@ -117,9 +117,9 @@ class CalculatorModelTest {
 	@Test
 	void additionPositives() {
 		
-		double expected = 12.0 + 8.0;
+		double expected = 1.0 + 1.0;
 		
-		double actual = CalculatorModel.calculate(12.0, 8.0, "+");
+		double actual = CalculatorModel.calculate(1.0, 1.0, "+");
 		
 		assertEquals(actual, expected);
 	}
@@ -227,9 +227,9 @@ class CalculatorModelTest {
 	@Test
 	void multiplyPositives() {
 		
-		double expected = 7330.0 * 20.8;
+		double expected = 4.2 * 2.0;
 		
-		double actual = CalculatorModel.calculate(7330, 20.8, "*");
+		double actual = CalculatorModel.calculate(4.2, 2.0, "*");
 		
 		assertEquals(actual, expected);
 	}
@@ -287,9 +287,9 @@ class CalculatorModelTest {
 	@Test
 	void squareRootTest1() {
 		
-		double expected = Math.sqrt(25);
+		double expected = Math.sqrt(16);
 		
-		double actual = CalculatorModel.calculate(25, 50, "sqrt");
+		double actual = CalculatorModel.calculate(16, 50, "sqrt");
 		
 		assertEquals(actual, expected);
 	}

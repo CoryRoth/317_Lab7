@@ -113,35 +113,41 @@ public class CalculatorView implements Observer {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				plusButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("-")) {
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				minusButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("/")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				divideButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("*")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				multButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("sq")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				sqButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("sqrt")) {
 				// frame.getContentPane().getComponent() //possible other fix
 				firstOperand = Double.valueOf(currentText);
 				operation = command;
+				ClearAllButtons();
 				sqrtButton.setBackground(Color.RED); // Change the background color of the plus button
 				resetInfo = true;
 			} else if (command.equals("Del")) {
@@ -182,6 +188,8 @@ public class CalculatorView implements Observer {
 					displayField.setText(currentText + command);
 				} // Handle button clicks
 			}
+			
+
 
 			// NOTES
 			// FEATURES
@@ -211,6 +219,16 @@ public class CalculatorView implements Observer {
 			// need to get 2 operands
 
 			// Appsend the button's text to the current text in the display field
+		}
+		
+		private void ClearAllButtons()
+		{
+			divideButton.setBackground(color); // Change the background color of the plus button
+			plusButton.setBackground(color); // Change the background color of the plus button
+			multButton.setBackground(color); // Change the background color of the plus button
+			minusButton.setBackground(color); // Change the background color of the plus button
+			sqButton.setBackground(color); // Change the background color of the plus button
+			sqrtButton.setBackground(color); // Change the background color of the plus button
 		}
 	}
 }
