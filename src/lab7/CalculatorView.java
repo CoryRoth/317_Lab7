@@ -187,8 +187,7 @@ public class CalculatorView implements Observer {
 				} else {
 					displayField.setText(currentText + command);
 				} // Handle button clicks
-			}
-			
+			}		
 
 
 			// NOTES
@@ -210,10 +209,10 @@ public class CalculatorView implements Observer {
 
 			// possible fix
 			// TODO
-			// THIS IS WERE LOIGIC Happens
+			// THIS IS WERE LOGIC Happens
 
 			// do not show operations call
-			// instead updaate state of button to active/inactive
+			// instead update state of button to active/inactive
 
 			// = means exec (call operate)
 			// need to get 2 operands
@@ -236,5 +235,10 @@ public class CalculatorView implements Observer {
 	public JTextField GetDisplayField()
 	{
 		return displayField;
+	}
+	
+	public String GetOperation()
+	{
+		return operation;
 	}
 }

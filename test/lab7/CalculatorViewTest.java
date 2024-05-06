@@ -2,6 +2,7 @@ package lab7;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.awt.event.ActionEvent;
 import java.util.Observable;
 
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 class CalculatorViewTest {
 	
 	CalculatorView view;
+	ActionEvent event;
 	
 	@BeforeEach
 	void Initialize()
@@ -36,6 +38,6 @@ class CalculatorViewTest {
 		view.update(new Observable(), num);
 		
 		assertEquals(expected, view.GetDisplayField().getText());
-	}
+	}	
 
 }
