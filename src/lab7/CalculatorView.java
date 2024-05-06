@@ -78,7 +78,7 @@ public class CalculatorView implements Observer {
 		}
 	}
 
-	private class ButtonClickListener implements ActionListener {
+	public class ButtonClickListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
 
@@ -221,14 +221,20 @@ public class CalculatorView implements Observer {
 			// Appsend the button's text to the current text in the display field
 		}
 		
-		private void ClearAllButtons()
-		{
-			divideButton.setBackground(color); // Change the background color of the plus button
-			plusButton.setBackground(color); // Change the background color of the plus button
-			multButton.setBackground(color); // Change the background color of the plus button
-			minusButton.setBackground(color); // Change the background color of the plus button
-			sqButton.setBackground(color); // Change the background color of the plus button
-			sqrtButton.setBackground(color); // Change the background color of the plus button
-		}
+	}
+	
+	private void ClearAllButtons()
+	{
+		divideButton.setBackground(color); // Change the background color of the plus button
+		plusButton.setBackground(color); // Change the background color of the plus button
+		multButton.setBackground(color); // Change the background color of the plus button
+		minusButton.setBackground(color); // Change the background color of the plus button
+		sqButton.setBackground(color); // Change the background color of the plus button
+		sqrtButton.setBackground(color); // Change the background color of the plus button
+	}
+	
+	public JTextField GetDisplayField()
+	{
+		return displayField;
 	}
 }
